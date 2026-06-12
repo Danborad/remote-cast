@@ -1,0 +1,20 @@
+{
+	"luci-app-remote-cast": {
+		"description": "Grant access to remote-cast configuration and status",
+		"read": {
+			"uci": [ "remote-cast" ],
+			"file": {
+				"/var/run/remote-cast/devices.json": [ "read" ],
+				"/usr/bin/remote-castctl": [ "exec" ],
+				"/etc/init.d/remote-cast": [ "exec" ]
+			}
+		},
+		"write": {
+			"uci": [ "remote-cast" ],
+			"file": {
+				"/usr/bin/remote-castctl": [ "exec" ],
+				"/etc/init.d/remote-cast": [ "exec" ]
+			}
+		}
+	}
+}
