@@ -1,0 +1,26 @@
+#!/bin/sh
+
+PID_FILE=/var/run/remote-cast/remote-cast.pid
+
+case "$1" in
+	scan)
+		if [ ! -s "$PID_FILE" ]; then
+			echo "remote-cast is not running"
+			exit 1
+		fi
+		kill -USR1 "$(cat "$PID_FILE")"
+		echo "scan requested"
+		;;
+	status)
+		if [ -s "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+			echo "running"
+		else
+			echo "stopped"
+			exit 1
+		fi
+		;;
+	*)
+		echo "usage: remote-castctl {scan|status}" >&2
+		exit 2
+		;;
+esac
