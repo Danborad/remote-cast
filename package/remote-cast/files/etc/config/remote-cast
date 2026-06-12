@@ -1,0 +1,7 @@
+config remote-cast 'main'
+	option enabled '0'
+	option lan_iface 'br-lan'
+	option easytier_iface 'easytier0'
+	option phone_subnet '10.0.0.0/8'
+	option allowed_tv_ips ''
+	option debug '0'
